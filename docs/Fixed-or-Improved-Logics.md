@@ -275,6 +275,22 @@ In `rulesmd.ini`:
 SellBuildupLength=23  ; integer, number of buildup frames to play
 ```
 
+### Offline power plant indicator
+
+- If `DrawPowerOffline` is set, `POWEROFF.SHP` indicator will appear on power plants when being infiltrated or drained.
+- `DrawPowerOffline.Offset` is used to vertically adjust position of indicator.
+- `DisablePowerOfflineIcon` is used to disable indicator per building type.
+
+In `rulesmd.ini`:
+```ini
+[AudioVisual]
+DrawPowerOffline=false          ; boolean
+DrawPowerOffline.Offset=0       ; integer, vertical offset,
+
+[SOMEBUILDING]
+DisablePowerOfflineIcon=false   ; boolean
+```
+
 ## Projectiles
 
 ### Cluster scatter distance customization

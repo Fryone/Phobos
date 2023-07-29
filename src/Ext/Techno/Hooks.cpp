@@ -1,4 +1,7 @@
+
+#include <GameOptionsClass.h>
 #include <ScenarioClass.h>
+#include <TacticalClass.h>
 #include "Body.h"
 
 #include <Ext/WarheadType/Body.h>

@@ -327,6 +327,8 @@ New:
 - PipScale pip size & ammo pip frame customization (by Starkku)
 - `AltPalette` lighting toggle (by Starkku)
 - Added sound entry on unit's creation (by Fryone)
+- Additional sync logging in case of desync errors occuring (by Starkku)
+- Offline power plant indicator (by Fryone)
 
 Vanilla fixes:
 - Allow AI to repair structures built from base nodes/trigger action 125/SW delivery in single player missions (by Trsdy)

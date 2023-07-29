@@ -285,6 +285,7 @@ This page lists all the individual contributions to the project by their author.
 - **Fryone**
   - Customizable ElectricBolt Arcs
   - Sound entry on unit's creation
+  - Offline power plant indicator
 - **Ares developers**
   - YRpp and Syringe which are used, save/load, project foundation and generally useful code from Ares
   - unfinished RadTypes code
