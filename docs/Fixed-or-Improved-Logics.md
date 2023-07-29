@@ -522,6 +522,7 @@ In `rulesmd.ini`:
 [SOMETECHNO]    ; TechnoType
 JumpjetRotateOnCrash=true  ; boolean
 ```
+
 ```{warning}
 This may subject to further changes.
 ```
@@ -740,6 +741,33 @@ In `artmd.ini`:
 [SOMEUNIT]      ; UnitType
 TurretShadow=   ; boolean
 ```
+
+### IsSimpleDeployer vehicle auto-deploy / deploy block on ammo change
+
+- `Ammo.AutoDeployAmount` determines amount of ammo, that converts/deploys vehicle automatically.
+- `Ammo.DeployUnlockAmount` determines amount of ammo, that allows vehicle converting/deploying command.
+
+In `rulesmd.ini`:
+```ini
+[SOMEVEHICLE]                          ; VehicleType
+Ammo.DeployUnlockAmount=-1      ; integer, unit will be allowed to undeploy only if it has at least this much ammo
+Ammo.AutoDeployAmount=-1        ; integer, unit will automatically deploy after running out of ammo
+```
+
+```{warning}
+`Ammo.AutoDeployAmount` feature requires `Convert.Deploy` from [Ares’ Type Conversion](https://ares-developers.github.io/Ares-docs/new/typeconversion.html) to change type. Unit without it will constantly use deploy command on self until ammo is changed.
+```
+
+### IsSimpleDeployer vehicle ammo change on deploy
+
+- `Ammo.AddOnDeploy` determines amount of ammo, added or extracted, if negative, on deploy.
+
+In `rulesmd.ini`:
+```ini
+[SOMEVEHICLE]                          ; VehicleType
+Ammo.AddOnDeploy=0      ; integer, unit will receive or lose this amount of ammo on deploy
+```
+
 
 ## VoxelAnims
 

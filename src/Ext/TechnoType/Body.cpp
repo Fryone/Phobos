@@ -152,6 +152,12 @@ void TechnoTypeExt::ExtData::LoadFromINIFile(CCINIClass* const pINI)
 
 	this->ShieldType.Read(exINI, pSection, "ShieldType", true);
 
+	this->Ammo_AddOnDeploy.Read(exINI, pSection, "Ammo.AddOnDeploy");
+	this->Ammo_AutoDeployAmount.Read(exINI, pSection, "Ammo.AutoDeployAmount");
+	this->Ammo_DeployUnlockAmount.Read(exINI, pSection, "Ammo.DeployUnlockAmount");
+
+	this->VoiceCantDeploy.Read(exINI, pSection, "VoiceCantDeploy");
+
 	this->AutoDeath_Behavior.Read(exINI, pSection, "AutoDeath.Behavior");
 	this->AutoDeath_VanishAnimation.Read(exINI, pSection, "AutoDeath.VanishAnimation");
 	this->AutoDeath_OnAmmoDepletion.Read(exINI, pSection, "AutoDeath.OnAmmoDepletion");
@@ -417,6 +423,11 @@ void TechnoTypeExt::ExtData::Serialize(T& Stm)
 		.Process(this->InitialStrength)
 		.Process(this->ShieldType)
 		.Process(this->PassengerDeletionType)
+
+		.Process(this->Ammo_AddOnDeploy)
+		.Process(this->Ammo_AutoDeployAmount)
+		.Process(this->Ammo_DeployUnlockAmount)
+		.Process(this->VoiceCantDeploy)
 
 		.Process(this->AutoDeath_Behavior)
 		.Process(this->AutoDeath_VanishAnimation)

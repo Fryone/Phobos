@@ -320,15 +320,16 @@ New:
 - Vehicle voxel turret shadows & body multi-section shadows (by TwinkleStar)
 - Crushing tilt and slowdown customization (by Starkku)
 - Extra warhead detonations on weapon (by Starkku)
-- Customizable ElectricBolt Arcs (by Fryone, Kerbiter)
 - Chrono sparkle animation display customization and improvements (by Starkku)
 - Script action to Chronoshift teams to enemy base (by Starkku)
+- Customizable ElectricBolt Arcs (by Fryone, Kerbiter)
 - Digital display of HP and SP (by ststl, FlyStar, Saigyouji, JunJacobYoung)
 - PipScale pip size & ammo pip frame customization (by Starkku)
 - `AltPalette` lighting toggle (by Starkku)
 - Added sound entry on unit's creation (by Fryone)
 - Additional sync logging in case of desync errors occuring (by Starkku)
 - Offline power plant indicator (by Fryone)
+- Auto-deploy/DeployBlock on ammo change (by Fryone)
 
 Vanilla fixes:
 - Allow AI to repair structures built from base nodes/trigger action 125/SW delivery in single player missions (by Trsdy)
