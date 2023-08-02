@@ -326,10 +326,12 @@ New:
 - Digital display of HP and SP (by ststl, FlyStar, Saigyouji, JunJacobYoung)
 - PipScale pip size & ammo pip frame customization (by Starkku)
 - `AltPalette` lighting toggle (by Starkku)
+- Change target Owner on warhead impact (by Fryone)
 - Added sound entry on unit's creation (by Fryone)
 - Additional sync logging in case of desync errors occuring (by Starkku)
 - Offline power plant indicator (by Fryone)
 - Auto-deploy/DeployBlock on ammo change (by Fryone)
+
 
 Vanilla fixes:
 - Allow AI to repair structures built from base nodes/trigger action 125/SW delivery in single player missions (by Trsdy)

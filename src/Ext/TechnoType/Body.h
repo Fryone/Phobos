@@ -169,6 +169,8 @@ public:
 		Valueable<int> PipWrapAmmoPip;
 		Nullable<Point2D> AmmoPipSize;
 
+		NullableVector<int> ChangeOwnerImmunities;
+
 		struct LaserTrailDataEntry
 		{
 			ValueableIdx<LaserTrailTypeClass> idxType;
@@ -333,6 +335,8 @@ public:
 			, EmptyAmmoPip { -1 }
 			, PipWrapAmmoPip { 14 }
 			, AmmoPipSize {}
+
+			, ChangeOwnerImmunities {}
 		{ }
 
 		virtual ~ExtData() = default;
