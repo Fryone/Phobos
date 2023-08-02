@@ -284,6 +284,9 @@ This page lists all the individual contributions to the project by their author.
   - Vehicle voxel turret shadows & body multi-section shadows
 - **Fryone**
   - Customizable ElectricBolt Arcs
+  - Sound entry on unit's creation
+  - Offline power plant indicator
+  - Auto-deploy/DeployBlock on ammo change
   - Change target Owner on warhead impact
 - **Ares developers**
   - YRpp and Syringe which are used, save/load, project foundation and generally useful code from Ares

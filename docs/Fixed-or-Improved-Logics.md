@@ -275,6 +275,22 @@ In `rulesmd.ini`:
 SellBuildupLength=23  ; integer, number of buildup frames to play
 ```
 
+### Offline power plant indicator
+
+- If `DrawPowerOffline` is set, `POWEROFF.SHP` indicator will appear on power plants when being infiltrated or drained.
+- `DrawPowerOffline.Offset` is used to vertically adjust position of indicator.
+- `DisablePowerOfflineIcon` is used to disable indicator per building type.
+
+In `rulesmd.ini`:
+```ini
+[AudioVisual]
+DrawPowerOffline=false          ; boolean
+DrawPowerOffline.Offset=0       ; integer, vertical offset,
+
+[SOMEBUILDING]
+DisablePowerOfflineIcon=false   ; boolean
+```
+
 ## Projectiles
 
 ### Cluster scatter distance customization
@@ -506,6 +522,7 @@ In `rulesmd.ini`:
 [SOMETECHNO]    ; TechnoType
 JumpjetRotateOnCrash=true  ; boolean
 ```
+
 ```{warning}
 This may subject to further changes.
 ```
@@ -724,6 +741,33 @@ In `artmd.ini`:
 [SOMEUNIT]      ; UnitType
 TurretShadow=   ; boolean
 ```
+
+### IsSimpleDeployer vehicle auto-deploy / deploy block on ammo change
+
+- `Ammo.AutoDeployAmount` determines amount of ammo, that converts/deploys vehicle automatically.
+- `Ammo.DeployUnlockAmount` determines amount of ammo, that allows vehicle converting/deploying command.
+
+In `rulesmd.ini`:
+```ini
+[SOMEVEHICLE]                          ; VehicleType
+Ammo.DeployUnlockAmount=-1      ; integer, unit will be allowed to undeploy only if it has at least this much ammo
+Ammo.AutoDeployAmount=-1        ; integer, unit will automatically deploy after running out of ammo
+```
+
+```{warning}
+`Ammo.AutoDeployAmount` feature requires `Convert.Deploy` from [Ares’ Type Conversion](https://ares-developers.github.io/Ares-docs/new/typeconversion.html) to change type. Unit without it will constantly use deploy command on self until ammo is changed.
+```
+
+### IsSimpleDeployer vehicle ammo change on deploy
+
+- `Ammo.AddOnDeploy` determines amount of ammo, added or extracted, if negative, on deploy.
+
+In `rulesmd.ini`:
+```ini
+[SOMEVEHICLE]                          ; VehicleType
+Ammo.AddOnDeploy=0      ; integer, unit will receive or lose this amount of ammo on deploy
+```
+
 
 ## VoxelAnims
 
