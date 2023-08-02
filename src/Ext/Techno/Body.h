@@ -61,7 +61,6 @@ public:
 
 		void ApplyInterceptor();
 		bool CheckDeathConditions();
-		void DepletedAmmoActions();
 		void EatPassengers();
 		void UpdateShield();
 		void UpdateOnTunnelEnter();

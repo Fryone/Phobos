@@ -65,26 +65,6 @@ void TechnoExt::ExtData::ApplyInterceptor()
 	}
 }
 
-void TechnoExt::ExtData::DepletedAmmoActions()
-{
-	auto const pThis = this->OwnerObject();
-	auto const pType = pThis->GetTechnoType();
-	if ((pThis->WhatAmI() != AbstractType::Unit) || (pType->Ammo <= 0))
-		return;
-
-	auto const pTypeExt = this->TypeExtData;
-	if (!pTypeExt->Ammo_AutoDeployAmount < 0)
-		return;
-
-	auto const pUnit = abstract_cast<UnitClass*>(pThis);
-
-	if (!pUnit->Type->IsSimpleDeployer)
-		return;
-	if (pThis->Ammo == pTypeExt->Ammo_AutoDeployAmount)
-		pThis->QueueMission(Mission::Unload, true);
-	return;
-}
-
 // TODO : Merge into new AttachEffects
 bool TechnoExt::ExtData::CheckDeathConditions()
 {

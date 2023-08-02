@@ -52,11 +52,6 @@ public:
 		Valueable<ShieldTypeClass*> ShieldType;
 		std::unique_ptr<PassengerDeletionTypeClass> PassengerDeletionType;
 
-		Nullable<int> Ammo_AddOnDeploy;
-		Valueable<int> Ammo_AutoDeployAmount;
-		Valueable<int> Ammo_DeployUnlockAmount;
-		NullableIdx<VocClass> VoiceCantDeploy;
-
 		Nullable<AutoDeathBehavior> AutoDeath_Behavior;
 		Nullable<AnimTypeClass*> AutoDeath_VanishAnimation;
 		Valueable<bool> AutoDeath_OnAmmoDepletion;
@@ -74,8 +69,6 @@ public:
 		NullableIdx<VocClass> SlavesFreeSound;
 		NullableIdx<VocClass> SellSound;
 		NullableIdx<VoxClass> EVA_Sold;
-
-		NullableIdx<VocClass> VoiceCreated;
 
 		Nullable<AnimTypeClass*> WarpOut;
 		Nullable<AnimTypeClass*> WarpIn;
@@ -266,10 +259,6 @@ public:
 			, DeployingAnim_KeepUnitVisible { false }
 			, DeployingAnim_ReverseForUndeploy { true }
 			, DeployingAnim_UseUnitDrawer { true }
-
-			, Ammo_AddOnDeploy { }
-			, Ammo_AutoDeployAmount { -1 }
-			, Ammo_DeployUnlockAmount { -1 }
 
 			, AutoDeath_Behavior { }
 			, AutoDeath_VanishAnimation {}
