@@ -1,4 +1,5 @@
 #include <UnitClass.h>
+#include <InfantryClass.h>
 #include <TechnoClass.h>
 
 #include <Ext/TechnoType/Body.h>
@@ -78,7 +79,7 @@ DEFINE_HOOK(0x730C70, DeployClass_Execute_RemoveDeploying, 0xA)
 	enum { Continue = 0x730C7A };
 	GET(TechnoClass*, pThis, ESI);
 
-	if (abstract_cast<UnitClass*>(pThis))
+	if (abstract_cast<UnitClass*>(pThis) || abstract_cast<InfantryClass*>(pThis))
 		UnitDeployConvertHelpers::RemoveDeploying(R);
 	else
 		R->AL(pThis->CanDeploySlashUnload());
@@ -106,3 +107,50 @@ DEFINE_HOOK(0x73DE78, UnitClass_Unload_ChangeAmmo, 0x6) // converters
 	UnitDeployConvertHelpers::ChangeAmmoOnUnloading(R);
 	return Continue;
 }
+
+DEFINE_HOOK(0x51EB9A, InfantryClass_WhatAction_RemoveDeploying, 0x6)
+{
+	enum { Continue = 0x51EBA0, NoDeploy = 0x51ED00 };
+	GET(InfantryClass*, pThis, EDI);
+	auto const pThisType = TechnoTypeExt::ExtMap.Find(pThis->GetTechnoType());
+
+	const bool isDeployer = pThis->Type->Deployer;
+	R->AL(isDeployer);
+	if (!isDeployer)
+		return Continue;
+
+	const bool skipMinimum = pThisType->Ammo_DeployUnlockMinimumAmount < 0;
+	const bool skipMaximum = pThisType->Ammo_DeployUnlockMaximumAmount < 0;
+
+	if (skipMinimum && skipMaximum)
+		return Continue;
+
+	const bool moreThanMinimum = pThis->Ammo >= pThisType->Ammo_DeployUnlockMinimumAmount;
+	const bool lessThanMaximum = pThis->Ammo <= pThisType->Ammo_DeployUnlockMaximumAmount;
+
+	if ((skipMinimum || moreThanMinimum) && (skipMaximum || lessThanMaximum))
+		return Continue;
+
+	return NoDeploy;
+}
+
+DEFINE_HOOK(0x51F702, InfantryClass_Unload_ChangeAmmo, 0xA) //undeploy
+{
+	enum { Continue = 0x51F716, Skip = 0x51F738 };
+	GET(InfantryClass*, pThis, ESI);
+	GET(int, currentSequence, EAX);
+
+	auto const pThisExt = TechnoTypeExt::ExtMap.Find(pThis->Type);
+
+	if (pThis->Type->Deployer && pThisExt->Ammo_AddOnDeploy)
+	{
+		const int ammoCalc = std::max(pThis->Ammo + pThisExt->Ammo_AddOnDeploy, 0);
+		pThis->Ammo = std::min(pThis->Type->Ammo, ammoCalc);
+	}
+
+	if(currentSequence == 27 || currentSequence == 28 || currentSequence == 29 || currentSequence == 30 )
+		return Continue;
+	return Skip;
+}
+
+
