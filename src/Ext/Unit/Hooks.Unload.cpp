@@ -153,4 +153,27 @@ DEFINE_HOOK(0x51F702, InfantryClass_Unload_ChangeAmmo, 0xA) //undeploy
 	return Skip;
 }
 
+DEFINE_HOOK(0x443737, BuildingClass_ActiveClickWith_RemoveUnloading, 0x6)
+{
+	enum { Continue = 0x44373D, Skip = 0x44384E };
+	GET(BuildingClass*, pBld, ECX);
+	GET(int, act, EAX);
 
+	if(act != 1) //not moving command
+		return Skip;
+
+	auto const pThisType = TechnoTypeExt::ExtMap.Find(pBld->Type);
+	const bool skipMinimum = pThisType->Ammo_DeployUnlockMinimumAmount < 0;
+	const bool skipMaximum = pThisType->Ammo_DeployUnlockMaximumAmount < 0;
+
+	if (skipMinimum && skipMaximum)
+		return Continue;
+
+	const bool moreThanMinimum = pBld->Ammo >= pThisType->Ammo_DeployUnlockMinimumAmount;
+	const bool lessThanMaximum = pBld->Ammo <= pThisType->Ammo_DeployUnlockMaximumAmount;
+
+	if ((skipMinimum || moreThanMinimum) && (skipMaximum || lessThanMaximum))
+		return Continue;
+
+	return Skip;
+}
